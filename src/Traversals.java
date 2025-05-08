@@ -15,15 +15,15 @@ public class Traversals {
   public static int sumLeafNodes(TreeNode<Integer> node) {
     if (node ==null){
 
-        return 0;
+      return 0;
 
     }//end edgecase
 
     if (node.left == null && node.right == null) {
 
-        return node.value;
+      return node.value;
 
-    }
+    }//end if
 
     return sumLeafNodes(node.left) + sumLeafNodes(node.right);
   }//end sumLeafNodes
@@ -39,7 +39,9 @@ public class Traversals {
   public static int countInternalNodes(TreeNode<Integer> node) {
     
     if (node == null || (node.left == null && node.right == null)) {
+
       return 0;
+
     }//end edgecase
 
     return 1 + countInternalNodes(node.left) + countInternalNodes(node.right);
@@ -60,7 +62,9 @@ public class Traversals {
     String emptyString = "";
 
     if (node == null) {
+
       return emptyString;
+
     }//end edgecase
 
     String postString = "";
@@ -84,7 +88,9 @@ public class Traversals {
     List<T> emptyList = new LinkedList<>();
 
     if (node == null) {
+
       return emptyList;
+
     }//end edgecase
 
     List<T> nodeValList = new LinkedList<>();
@@ -92,11 +98,13 @@ public class Traversals {
     queue.add(node);
 
     while (!queue.isEmpty()) {
+
       TreeNode<T> current = queue.poll();
       nodeValList.add(current.value);
       if (current.left != null) queue.add(current.left);
       if (current.right != null) queue.add(current.right);
-    }
+      
+    }//end while
 
     return nodeValList;
   }//end collectLevelOrderValues
@@ -109,13 +117,24 @@ public class Traversals {
    * @return the number of unique values in the tree, or 0 if the tree is null
    */
   public static int countDistinctValues(TreeNode<Integer> node) {
-    if (node ==null){
+    if (node == null) {
 
       return 0;
 
-  }//end edgecase
-    
-    return 0;
+    }//end edgecase
+
+    Set<Integer> set = new HashSet<>();
+    Stack<TreeNode<Integer>> stack = new Stack<>();
+    stack.push(node);
+
+    while (!stack.isEmpty()) {
+      TreeNode<Integer> current = stack.pop();
+      set.add(current.value);
+      if (current.right != null) stack.push(current.right);
+      if (current.left != null) stack.push(current.left);
+    }
+
+    return set.size();
   }//end countDistinctValues
 
   /**
