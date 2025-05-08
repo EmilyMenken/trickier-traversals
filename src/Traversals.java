@@ -2,6 +2,8 @@ import java.util.*;
 
 public class Traversals {
 
+  // countInternalNodes
+
   /**
    * Returns the sum of the values of all leaf nodes in the given tree of integers.
    * A leaf node is defined as a node with no children.
@@ -38,7 +40,7 @@ public class Traversals {
     
     if (node == null || (node.left == null && node.right == null)) {
       return 0;
-    }
+    }//end edgecase
 
     return 1 + countInternalNodes(node.left) + countInternalNodes(node.right);
   }//end countInternalNodes
@@ -54,16 +56,17 @@ public class Traversals {
    * @return a post-order traversal string, or an empty string if the tree is null
    */
   public static <T> String buildPostOrderString(TreeNode<T> node) {
-    
+
     String emptyString = "";
-    
-    if (node ==null){
 
+    if (node == null) {
       return emptyString;
+    }//end edgecase
 
-  }//end edgecase
-
-  String postString = "";
+    String postString = "";
+    postString += buildPostOrderString(node.left);
+    postString += buildPostOrderString(node.right);
+    postString += node.value.toString();
 
     return postString;
   }//end buildPostOrderString
