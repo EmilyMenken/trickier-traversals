@@ -11,8 +11,20 @@ public class Traversals {
    * @return the sum of leaf node values, or 0 if the tree is null
    */
   public static int sumLeafNodes(TreeNode<Integer> node) {
-    return 0;
-  }
+    if (node ==null){
+
+        return 0;
+
+    }//end edgecase
+
+    if (node.left == null && node.right == null) {
+
+        return node.value;
+
+    }
+
+    return sumLeafNodes(node.left) + sumLeafNodes(node.right);
+  }//end sumLeafNodes
 
   /**
    * Counts the number of internal nodes (non-leaf nodes) in the given tree of integers.
@@ -23,8 +35,23 @@ public class Traversals {
    * @return the count of internal nodes, or 0 if the tree is null
    */
   public static int countInternalNodes(TreeNode<Integer> node) {
-    return 0;
-  }
+    
+    
+    if (node ==null){
+
+      return 0;
+
+  }//end edgecase
+
+  int nodeCount = 0;
+
+  if (node.right != null && node.left != null){
+      nodeCount++;
+
+  }//end if
+
+  return nodeCount;
+  }//end countInternalNodes
 
   /**
    * Creates a string by concatenating the string representation of each node's value
@@ -37,8 +64,19 @@ public class Traversals {
    * @return a post-order traversal string, or an empty string if the tree is null
    */
   public static <T> String buildPostOrderString(TreeNode<T> node) {
-    return null;
-  }
+    
+    String emptyString = "";
+    
+    if (node ==null){
+
+      return emptyString;
+
+  }//end edgecase
+
+  String postString = "";
+
+    return postString;
+  }//end buildPostOrderString
 
   /**
    * Collects the values of all nodes in the tree level by level, from top to bottom.
@@ -49,8 +87,21 @@ public class Traversals {
    * @return a list of node values in a top-to-bottom order, or an empty list if the tree is null
    */
   public static <T> List<T> collectLevelOrderValues(TreeNode<T> node) {
-    return null;
-  }
+    
+    List<T> emptyList = new LinkedList <>();
+    
+    if (node ==null){
+
+      return emptyList;
+
+  }//end edgecase
+
+  List <T> nodeValList = new LinkedList<>();
+
+
+    
+    return nodeValList;
+  }//end collectLevelOrderValues
 
   /**
    * Counts the distinct values in the given tree.
@@ -60,8 +111,14 @@ public class Traversals {
    * @return the number of unique values in the tree, or 0 if the tree is null
    */
   public static int countDistinctValues(TreeNode<Integer> node) {
+    if (node ==null){
+
+      return 0;
+
+  }//end edgecase
+    
     return 0;
-  }
+  }//end countDistinctValues
 
   /**
    * Determines whether there is at least one root-to-leaf path in the tree
@@ -72,8 +129,14 @@ public class Traversals {
    * @return true if there exists a strictly increasing root-to-leaf path, false otherwise
    */
   public static boolean hasStrictlyIncreasingPath(TreeNode<Integer> node) {
+    if (node ==null){
+
+      return false;
+
+  }//end edgecase
+    
     return false;
-  }
+  }//end hasStrictlyIncreasingPath
 
   // OPTIONAL CHALLENGE
   /**
