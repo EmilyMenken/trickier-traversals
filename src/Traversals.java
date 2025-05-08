@@ -36,21 +36,11 @@ public class Traversals {
    */
   public static int countInternalNodes(TreeNode<Integer> node) {
     
-    
-    if (node ==null){
-
+    if (node == null || (node.left == null && node.right == null)) {
       return 0;
+    }
 
-  }//end edgecase
-
-  int nodeCount = 0;
-
-  if (node.right != null && node.left != null){
-      nodeCount++;
-
-  }//end if
-
-  return nodeCount;
+    return 1 + countInternalNodes(node.left) + countInternalNodes(node.right);
   }//end countInternalNodes
 
   /**
